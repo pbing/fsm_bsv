@@ -1,0 +1,8 @@
+*.gtkw
+*.so
+*.vcd
+bdir/
+bsim
+doc/
+run.sh
+simdir/
