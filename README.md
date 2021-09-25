@@ -21,4 +21,4 @@ bsc -verilog -u ./test/Tb1.bsv
 ```
 
 ## References
-    * [Clifford E. Cummings, Heath Chambers, "Finite State Machine (FSM) Design & Synthesis using SystemVerilog - Part I"](http://www.sunburst-design.com/papers/CummingsSNUG2019SV_FSM1.pdf)
+* [Clifford E. Cummings, Heath Chambers, "Finite State Machine (FSM) Design & Synthesis using SystemVerilog - Part I"](http://www.sunburst-design.com/papers/CummingsSNUG2019SV_FSM1.pdf)
