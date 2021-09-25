@@ -1,5 +1,7 @@
 # Description
 
+Compare finite state machine (FSM) coding styles in Bluespec SystemVerilog (BSV) in comparition to SystemVerilog.
+
 ## Quickstart
 Create an environment for BSC
 ```shell
