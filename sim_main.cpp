@@ -21,10 +21,9 @@ int main(int argc, char **argv, char **env) {
   const std::unique_ptr<Vtop> top{new Vtop{contextp.get(), "TOP"}};
 
   Verilated::traceEverOn(true);
-  //const std::unique_ptr<VerilatedVcdC> tr{new VerilatedVcdC};
-  VerilatedVcdC *tr = new VerilatedVcdC;
-  top->trace(tr, 5);
-  tr->open("waveform.vcd");
+  VerilatedVcdC *tfp = new VerilatedVcdC;
+  top->trace(tfp, 99);
+  tfp->open("waveform.vcd");
 
   Verilated::assertOn(false);
 
@@ -35,9 +34,11 @@ int main(int argc, char **argv, char **env) {
   top->ws    = 0;
 
   for (; sim_time < MAX_SIM_TIME; ++sim_time) {
+    contextp->time(sim_time);
+
     top->CLK = !top->CLK;
     top->eval();
-    tr->dump(sim_time);
+    tfp->dump(sim_time);
 
     if (top->CLK) {
       switch (cycles) {
@@ -76,7 +77,7 @@ int main(int argc, char **argv, char **env) {
   contextp->coveragep()->write("logs/coverage.dat");
 #endif
 
-  tr->close();
+  tfp->close();
 
   // Return good completion status
   // Don't use exit() or destructor won't get called
