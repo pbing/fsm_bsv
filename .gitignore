@@ -1,8 +1,10 @@
+*.BAK
 *.gtkw
 *.so
 *.vcd
 bdir/
 bsim
 doc/
+obj_dir/
 run.sh
 simdir/

@@ -3,21 +3,32 @@
 Compare finite state machine (FSM) coding styles in Bluespec SystemVerilog (BSV) in comparition to SystemVerilog.
 
 ## Quickstart
-Create an environment for BSC
+
+### Create an environment for BSC
 ```shell
 source env.sh
 ```
 
-Simulate
+### Bluespec simulation
 ```shell
 bsc -sim -u ./test/Tb1.bsv
 bsc -sim -e mkTb
 ./bsim -V
 ```
 
-Create RTL
+### Create RTL
 ```shell
 bsc -verilog -u ./test/Tb1.bsv
+```
+
+### Lint
+```shell
+verilator -Wall --lint-only -f verilator.f ./test/top.sv
+```
+
+### SystemVerilog simulation
+```shell
+verilator -Wall -f verilator.f --cc --exe --build ./test/top.sv sim_main.cpp
 ```
 
 ## References
