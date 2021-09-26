@@ -1,0 +1,16 @@
+// DESCRIPTION: Verilator output: Waivers generated with --waiver-output
+
+`verilator_config
+
+// Below you find suggested waivers. You have three options:
+//   1. Fix the reason for the linter warning
+//   2. Keep the waiver permanently if you are sure this is okay
+//   3. Keep the waiver temporarily to suppress the output
+
+lint_off -rule DECLFILENAME -file "*rtl/fsm1_pkg_a.sv" -match "Filename 'fsm1_pkg_a' does not match PACKAGE name: 'fsm1_pkg'"
+lint_off -rule DECLFILENAME -file "*rtl/fsm1_pkg_b.sv" -match "Filename 'fsm1_pkg_b' does not match PACKAGE name: 'fsm1_pkg'"
+
+lint_off -rule STMTDLY -file "*verilog/mkFsm1_comb.v" -match "Unsupported: Ignoring delay on this delayed statement."
+lint_off -rule STMTDLY -file "*verilog/mkFsm1_comb.v" -match "Unsupported: Ignoring delay on this delayed statement."
+lint_off -rule STMTDLY -file "*verilog/mkFsm1.v"      -match "Unsupported: Ignoring delay on this delayed statement."
+lint_off -rule STMTDLY -file "*verilog/mkFsm1.v"      -match "Unsupported: Ignoring delay on this delayed statement."

@@ -29,6 +29,7 @@ verilator -Wall --lint-only -f verilator.f ./test/top.sv
 ### SystemVerilog simulation
 ```shell
 verilator -Wall -f verilator.f --cc --exe --build ./test/top.sv sim_main.cpp
+./obj_dir/Vtop
 ```
 
 ## References

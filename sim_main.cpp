@@ -9,6 +9,10 @@
 vluint64_t sim_time = 0;
 vluint64_t cycles = 0;
 
+double sc_time_stamp() {
+  return sim_time;
+}
+
 int main(int argc, char **argv, char **env) {
   // Prevent unused variable warnings
   if (false && argc && argv && env) {}
@@ -68,18 +72,7 @@ int main(int argc, char **argv, char **env) {
     }
   }
 
-  // Final model cleanup
   top->final();
-
-  // Coverage analysis (calling write only after the test is known to pass)
-#if VM_COVERAGE
-  Verilated::mkdir("logs");
-  contextp->coveragep()->write("logs/coverage.dat");
-#endif
-
   tfp->close();
-
-  // Return good completion status
-  // Don't use exit() or destructor won't get called
   return 0;
 }
