@@ -51,6 +51,13 @@ module top
       .rd    (rd[5]),
       .ds    (ds[5]));
 
+   initial begin
+      if ($test$plusargs("trace") != 0) begin
+         $dumpfile("dump.vcd");
+         $dumpvars();
+      end
+   end
+
    always @(posedge CLK) begin
       chk_rd: assert (rd[0] == rd[1] &&
                       rd[0] == rd[2] &&

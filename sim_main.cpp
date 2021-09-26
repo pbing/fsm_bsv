@@ -25,10 +25,6 @@ int main(int argc, char **argv, char **env) {
   const std::unique_ptr<Vtop> top{new Vtop{contextp.get(), "TOP"}};
 
   Verilated::traceEverOn(true);
-  VerilatedVcdC *tfp = new VerilatedVcdC;
-  top->trace(tfp, 99);
-  tfp->open("waveform.vcd");
-
   Verilated::assertOn(false);
 
   // Set Vtop's input signals
@@ -42,7 +38,6 @@ int main(int argc, char **argv, char **env) {
 
     top->CLK = !top->CLK;
     top->eval();
-    tfp->dump(sim_time);
 
     if (top->CLK) {
       switch (cycles) {
@@ -73,6 +68,5 @@ int main(int argc, char **argv, char **env) {
   }
 
   top->final();
-  tfp->close();
   return 0;
 }
