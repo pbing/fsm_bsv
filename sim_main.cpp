@@ -29,7 +29,7 @@ int main(int argc, char **argv, char **env) {
 
   // Set Vtop's input signals
   top->CLK   = 0;
-  top->RST_N = 1;
+  top->RST_N = 0;
   top->go    = 0;
   top->ws    = 0;
 

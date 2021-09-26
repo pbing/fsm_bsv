@@ -16,9 +16,9 @@ endinterface
 /* registered outputs */
 (* synthesize *)
 module mkFsm1(Fsm1_IFC);
-   Reg#(Bool)  rd_r  <- mkReg(False);
-   Reg#(Bool)  ds_r  <- mkReg(False);
-   Reg#(State) state <- mkReg(IDLE);
+   Reg#(Bool)  rd_r  <- mkRegA(False);
+   Reg#(Bool)  ds_r  <- mkRegA(False);
+   Reg#(State) state <- mkRegA(IDLE);
 
    rule debug (True);
       $display("%t %m.state=", $time, fshow(state));
@@ -71,7 +71,7 @@ endmodule
 /* combinatorial outputs */
 (* synthesize *)
 module mkFsm1_comb(Fsm1_IFC);
-   Reg#(State) state <- mkReg(IDLE);
+   Reg#(State) state <- mkRegA(IDLE);
 
    rule debug (True);
       $display("%t %m.state=", $time, fshow(state));
