@@ -5,12 +5,12 @@
 
 #include "Vtop.h"
 
-#define MAX_SIM_TIME 30
-vluint64_t sim_time = 0;
+#define MAX_MAIN_TIME 30
+vluint64_t main_time = 0;
 vluint64_t cycles = 0;
 
 double sc_time_stamp() {
-  return sim_time;
+  return main_time;
 }
 
 int main(int argc, char **argv, char **env) {
@@ -32,34 +32,30 @@ int main(int argc, char **argv, char **env) {
   top->RST_N = 0;
   top->go    = 0;
   top->ws    = 0;
+  top->eval();
 
-  for (; sim_time < MAX_SIM_TIME; ++sim_time) {
-    contextp->time(sim_time);
-
+  for (; main_time < MAX_MAIN_TIME; ++main_time) {
     top->CLK = !top->CLK;
     top->eval();
 
     if (top->CLK) {
       switch (cycles) {
       case 1:
-        top->RST_N = 0;
-        break;
-      case 2:
         top->RST_N = 1;
         break;
-      case 3:
+      case 2:
         Verilated::assertOn(true);
         break;
-      case 5:
+      case 3:
         top->go = 1;
         break;
-      case 6:
+      case 4:
         top->go = 0;
         break;
-      case 7:
+      case 5:
         top->ws = 1;
         break;
-      case 9:
+      case 7:
         top->ws = 0;
         break;
       }
